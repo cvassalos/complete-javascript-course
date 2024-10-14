@@ -12,6 +12,10 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
+  order: function (startIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
   openingHours: {
     thu: {
       open: 12,
@@ -27,3 +31,16 @@ const restaurant = {
     },
   },
 };
+
+const {name, openingHours, categories} = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName, 
+  openingHours: hours, 
+  categories: tags
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+const { menu = [], starterMenu: starters = []} = restaurant
+console.log(menu, starters);
