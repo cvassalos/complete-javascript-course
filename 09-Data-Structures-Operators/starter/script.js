@@ -8,8 +8,8 @@ const flights =
 
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-const hours = {
-  [weekdays[3]: {
+const openingHours = {
+  [weekdays[3]]: {
     open: 12,
     close: 22,
   },
@@ -31,7 +31,7 @@ const restaurant = {
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
   // ES6 enhanced object literals
-  hours,
+  openingHours,
 
   order(startIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
@@ -59,6 +59,19 @@ const restaurant = {
     console.log(otherIngredients);
   },
 
+};
+
+if (restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
+
+// WITH optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for(const day of days) {
+  const open = restaurant.openingHours[day]?.open;
+  console.log(`On ${day}, we open at ${open}`);
 };
 
 // const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
