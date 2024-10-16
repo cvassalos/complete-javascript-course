@@ -313,8 +313,24 @@ printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
 */
 
 
-
 //---------- SHORT CIRCUITING ---------//
 //
-//
+/*
 // EXERCISE 5.1
+const hasExamplesInJava = function (book) {
+  return book.programmingLanguage == 'Java' || 'no data available';
+};
+hasExamplesInJava(books[0]);
+hasExamplesInJava(books[1]);
+
+// EXERCISE 5.2
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent && console.log(`${books[i].title} provides online content`);
+};
+*/
+
+
+//---------- NULLISH COALESCING OPERATOR ---------//
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent ?? console.log(`"${books[i].title} provices no data about its online content`);
+};
