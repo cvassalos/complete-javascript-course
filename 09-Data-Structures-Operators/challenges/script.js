@@ -331,6 +331,34 @@ for (let i = 0; i < books.length; i++) {
 
 
 //---------- NULLISH COALESCING OPERATOR ---------//
+//
+/*
 for (let i = 0; i < books.length; i++) {
   books[i].onlineContent ?? console.log(`"${books[i].title} provices no data about its online content`);
 };
+*/
+
+
+//---------- NULLISH COALESCING OPERATOR ---------//
+//
+//
+// EXERCISE 7.1
+for(let i = 0; i < books.length; i++) {
+  books[i].edition ||= 1;
+};
+
+// EXERCISE 7.2
+for(let i = 0; i < books.length; i++) {
+  books[i].highlighted &&= !(books[i].thirdParty.goodreads.rating < 4.2);
+};
+
+
+
+
+
+
+
+
+
+
+
