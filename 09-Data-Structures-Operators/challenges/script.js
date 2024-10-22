@@ -223,7 +223,65 @@ const books = [
   },
 ];
 
+//---------- LOOPING OBJECTS ---------//
+//
+// EXERCISE 11.1
+const entries = [];
+for(const key of Object.keys(books[0].thirdParty.goodreads)) {
+  entries.push(key);
+}
+console.log(entries);
 
+// EXERCISE 10.2
+for(const [index, value] of Object.values(books[0].thirdParty.goodreads).entries()) {
+  entries[index].push(value);
+}
+console.log(entries);
+
+
+//---------- OPTIONAL CHAINING ---------//
+//
+// EXERCISE 10.1
+/*
+const getFirstKeyword = function(book) {
+  return book.keywords?.[0];
+}
+console.log(getFirstKeyword(books[0]));
+
+
+/*
+//---------- ENHANCED OBJECT LITERALS---------//
+//
+// EXERCISE 9.1
+const bookData = [
+  ['title', 'Computer Networking: A Top-Down Approach'],
+  ['author', ['James F. Kurose', 'Keith W. Ross']],
+  ['publisher', 'Addison Wesley'],
+];
+
+// Do the rest
+const newBook = {
+  [bookData[0][0]]: bookData[0][1],
+  [bookData[1][0]]: bookData[1][1],
+  [bookData[2][0]]: bookData[2][1]
+  // ...
+};
+console.log(newBook);
+
+const pages = 880;
+
+const newBook2 = {
+  title: 'The C Programming Language',
+  author: ['Brian W. Kernighan', 'Dennis M. Ritchie'],
+  pages,
+  // ...
+}
+console.log(newBook2);
+
+
+
+
+/*
 //---------- LOOPING ARRAYS ---------//
 //
 //
