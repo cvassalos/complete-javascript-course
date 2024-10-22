@@ -54,7 +54,19 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+console.log(flights.split('+'));
 
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for(const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.replaceAll('_', ' ')} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
+  console.log(output);
+}
+
+
+
+/*
 console.log('a+very+nice+string'.split('+'));
 console.log('Jonas Schmedtmann'.split(' '));
 
