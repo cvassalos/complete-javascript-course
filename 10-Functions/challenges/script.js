@@ -19,8 +19,16 @@ const registerNewAnswer = function () {
             registerNewAnswer();
         }
     }
+    displayResults(poll.answers);
+}
+
+const displayResults = function(type) {
+    if(typeof type === 'string') {
+        console.log(`Poll results are ${poll.answers[0]}, ${poll.answers[1]}, ${poll.answers[2]}, ${poll.answers[3]}`);
+    } else {
+        console.log(type)
+    }
 }
 
 document.querySelector('.poll').addEventListener('click', registerNewAnswer);
 
-console.log(poll.answers);
