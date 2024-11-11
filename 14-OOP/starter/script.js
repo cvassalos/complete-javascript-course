@@ -101,38 +101,49 @@ const sarah = Object.create(PersonProto);
 sarah.init('Sarah', 1979);
 */
 
-const Person = function (firstName, birthYear) {
-  this.firstName = firstName;
-  this.birthYear = birthYear;
-};
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
 
-Person.prototype.calcAge = function() {
-  console.log(2037 - this.birthYear);
-};
+  // Methods will be added to .prototype property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
 
-const Student = function(firstName, birthYear, course) {
-  Person.call(this, firstName, birthYear);
-  this.course = course;
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // Set a property that already exists
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(" ")) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log("Hey there");
+    console.log(this);
+  }
 }
 
-// Linking prototypes
-Student.prototype = Object.create(Person.prototype);
-
-Student.prototype.introduce = function() {
-  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+class Student extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // super always needs to happen first
+    super(firstName, birthYear);
+    this.course = course;
+  }  
 }
 
-const mike = new Student('Mike', 2020, 'Computer Science');
-console.log(mike);
-mike.introduce();
-mike.calcAge();
-
-console.log(mike.__proto__);
-console.log(mike.__proto__.__proto__);
-
-console.log(mike instanceof Student);
-console.log(mike instanceof Person);
-console.log(mike instanceof Object);
-
-Student.prototype.constructor = Student;
-console.dir(Student.prototype.constructor);
+const martha = new StudentCl('Martha Jones', 2012, 'Computer Science');
