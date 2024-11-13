@@ -377,3 +377,14 @@ console.log(BigInt(32487345982473598237452398572385907235));
 // Operations
 console.log(10000n + 10000n);
 console.log(243087423029387230948203948n * 1000000000n);
+// console.log(Math.sqrt(16n));
+
+// Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log(20n == 20);
+
+// Divisions
+console.log(12n / 3n);
+console.log(10 / 3);
