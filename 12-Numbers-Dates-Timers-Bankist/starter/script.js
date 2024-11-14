@@ -84,17 +84,14 @@ const inputClosePin = document.querySelector('.form__input--pin');
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
-  const movs = acc.movements.map((mov, i) => ({
-    movement: mov,
-    date: acc.movementsDates[i],
-  }));
+  const movs = sort
+    ? acc.movements.slice().sort((a, b) => a - b)
+    : acc.movements;
 
-  const sortedMovs = sort ? movs.slice().sort((a, b) => a - b) : movs;
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
 
-  sortedMovs.forEach(function (entry, i) {
-    const type = entry.movement > 0 ? 'deposit' : 'withdrawal';
-
-    const date = new Date(entry.date);
+    const date = new Date(acc.movementsDates[i]);
     const day = `${date.getDate()}`.padStart(2, '0');
     const month = `${date.getMonth() + 1}`.padStart(2, '0');
     const year = date.getFullYear();
@@ -106,7 +103,7 @@ const displayMovements = function (acc, sort = false) {
       i + 1
     } ${type}</div>
         <div class="movements__date">${displayDate}</div>
-        <div class="movements__value">${entry.movement.toFixed(2)}€</div>
+        <div class="movements__value">${mov.toFixed(2)}€</div>
       </div>
     `;
 
@@ -176,8 +173,8 @@ const now = new Date();
 const day = `${now.getDate()}`.padStart(2, '0');
 const month = `${now.getMonth() + 1}`.padStart(2, '0');
 const year = now.getFullYear();
-const hour = now.getHours();
-const min = now.getMinutes();
+const hour = `${now.getHours()}`.padStart(2, '0');
+const min = `${now.getMinutes()}`.padStart(2, '0');
 labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
 // day/month/year
@@ -226,6 +223,10 @@ btnTransfer.addEventListener('click', function (e) {
     currentAccount.movements.push(-amount);
     receiverAcc.movements.push(amount);
 
+    // Add transfer date
+    currentAccount.movementsDates.push(new Date());
+    receiverAcc.movementsDates.push(new Date().toISOString());
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -235,12 +236,13 @@ btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
 
   const amount = Math.floor(inputLoanAmount.value);
-  const date = new Date();
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
     // Add movement
     currentAccount.movements.push(amount);
-    currentAccount.movementsDates.push(date);
+
+    // Add loan date
+    currentAccount.movementsDates.push(new Date().toISOString());
 
     // Update UI
     updateUI(currentAccount);
