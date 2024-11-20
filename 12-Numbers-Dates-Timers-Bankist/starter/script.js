@@ -21,9 +21,9 @@ const account1 = {
     '2020-01-28T09:15:04.904Z',
     '2020-04-01T10:17:24.185Z',
     '2020-05-08T14:11:59.604Z',
-    '2020-10-27T17:01:17.194Z',
-    '2020-10-11T23:36:17.929Z',
-    '2020-11-17T10:51:36.790Z',
+    '2024-10-27T17:01:17.194Z',
+    '2024-11-15T23:36:17.929Z',
+    '2024-11-19T10:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT', // de-DE
@@ -184,15 +184,17 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
+// Experimenting API
 const now = new Date();
+labelDate.textContent = new Intl.DateTimeFormat('en-US').format(now);
+
+// const now = new Date();
 const day = `${now.getDate()}`.padStart(2, '0');
 const month = `${now.getMonth() + 1}`.padStart(2, '0');
 const year = now.getFullYear();
 const hour = `${now.getHours()}`.padStart(2, '0');
 const min = `${now.getMinutes()}`.padStart(2, '0');
 labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
-
-// day/month/year
 
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
