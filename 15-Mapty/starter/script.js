@@ -79,10 +79,9 @@ class App {
 
     constructor() {
         this._getPosition()
-
         form.addEventListener('submit', this._newWorkout.bind(this));
-
         inputType.addEventListener('change', this._toggleElevationField);
+        containerWorkouts.addEventListener('click', this._moveToPopup);
     }
 
     _getPosition() {
@@ -255,6 +254,8 @@ class App {
         
         form.insertAdjacentHTML('afterend', html);
     }
+
+    _moveTopo
 }
 
 const app = new App();
