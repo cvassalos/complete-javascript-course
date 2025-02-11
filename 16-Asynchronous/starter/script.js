@@ -135,14 +135,6 @@ const getCountryData = function(country) {
 };
 */
 
-const getJSON = function(url, errorMsg = 'Something went wrong') {
-  return fetch(url).then(response => {
-    if(!response.ok)
-      throw new Error(`${errorMsg} (${response.status})`);
-
-    return response.json();
-  })
-};
 
 // const getCountryData = function(country) {
 //   // Country 1
@@ -173,6 +165,16 @@ const getJSON = function(url, errorMsg = 'Something went wrong') {
 //       })
 
 // };
+
+const getJSON = function(url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if(!response.ok)
+      throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  })
+};
+
 
 const getCountryData = function(country) {
   // Country 1
