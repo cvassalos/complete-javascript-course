@@ -1,5 +1,5 @@
 'use strict';
-
+/*
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -165,7 +165,6 @@ const getCountryData = function(country) {
 //       })
 
 // };
-
 const getJSON = function(url, errorMsg = 'Something went wrong') {
   return fetch(url).then(response => {
     if(!response.ok)
