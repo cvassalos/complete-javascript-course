@@ -79,8 +79,19 @@ const tabsContainer = document.querySelector('.operations__tab-container');
 const tabsContent = document.querySelectorAll('.operations__content');
 
 tabsContainer.addEventListener('click', function(e) {
-  const clicked = e.target;
+  const clicked = e.target.closest('.operations__tab');
   console.log(clicked);
+
+  // Guard clause
+  if(!clicked) return;
+
+  // Remove active classes
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabsContent.forEach(content => content.classList.remove('operations__content--active'));
+
+  // Activate content area
+  clicked.classList.add('operations__tab--active');
+  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
 })
 
 
