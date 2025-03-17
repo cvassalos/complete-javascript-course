@@ -18,6 +18,7 @@ import add, { cart } from './shoppingCart.js'
 add('pizza', 2);
 add('bread', 5);
 add('apple', 4);
+
 console.log(cart);
 
 // const res = await fetch('https://jsonplaceholder.typicode.com/posts');
@@ -93,3 +94,4 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
